@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact Us | Taniti</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar split-header">
+      <div class="nav-card">
+        <div class="logo"><a href="home.html" class="logo-link">Taniti</a></div>
+        <ul class="nav-links">
+          <li><a href="home.html">Home</a></li>
+          <li><a href="lodging.html">Lodging</a></li>
+          <li><a href="activities.html">Activities</a></li>
+          <li><a href="city.html">Taniti City</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="header-right">
+          <a href="home.html#plan" class="btn header-cta">Plan Your Trip</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero lodging-hero">
+      <div class="hero-content">
+        <h1>Contact Us</h1>
+        <p>We’re here to help you plan your perfect Taniti trip!</p>
+      </div>
+    </header>
+
+  <main class="contact-main-content">
+  <section class="contact-main">
+    <form class="reachout-form" autocomplete="off">
+      <h2 class="form-title">Send Us a Message</h2>
+      <input type="text" name="name" placeholder="Your Name" required class="form-input">
+      <input type="email" name="email" placeholder="Your Email" required class="form-input">
+      <select name="inquiry" required class="form-input">
+        <option value="">How can we help?</option>
+        <option value="general">General Inquiry</option>
+        <option value="booking">Booking Help</option>
+        <option value="feedback">Feedback</option>
+        <option value="other">Other</option>
+      </select>
+      <div class="form-dates">
+        <div class="form-date">
+          <label for="start-date" class="form-label">Start Date</label>
+          <input type="date" name="start-date" required class="form-input">
+        </div>
+        <div class="form-date">
+          <label for="end-date" class="form-label">End Date</label>
+          <input type="date" name="end-date" required class="form-input">
+        </div>
+      </div>
+      <textarea name="message" placeholder="Your Message" rows="4" required class="form-input"></textarea>
+      <button type="submit" class="btn">Send Message</button>
+      <div id="confirmation-message" class="confirmation-message">We can't wait to meet you!</div>
+    </form>
+    <div class="contact-slideshow-outer">
+      <div class="slideshow-label">Create your own memories!</div>
+      <div class="contact-slideshow">
+        <img src="slide1.png" alt="Taniti Slideshow" class="slideshow-img contact-img-styled slideshow-framed">
+      </div>
+    </div>
+  </section>
+  <script>
+   
+    const slideshowImages = [
+      'slide1.png',
+      'slide2.png',
+      'slide3.png',
+      'slide4.png'
+    ];
+    let slideIdx = 0;
+    setInterval(() => {
+      slideIdx = (slideIdx + 1) % slideshowImages.length;
+      const img = document.querySelector('.slideshow-img');
+      if (img) {
+        img.src = slideshowImages[slideIdx];
+      }
+    }, 4200);
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('.reachout-form');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        const nameInput = form.querySelector('input[name="name"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        const messageInput = form.querySelector('textarea[name="message"]');
+        const startDateInput = form.querySelector('input[name="start-date"]');
+        const endDateInput = form.querySelector('input[name="end-date"]');
+        if (nameInput) nameInput.value = nameInput.value.trim();
+        if (emailInput) emailInput.value = emailInput.value.trim().toLowerCase();
+        if (messageInput) messageInput.value = messageInput.value.trim();
+
+        if (emailInput && !/^\S+@\S+\.\S+$/.test(emailInput.value)) {
+          alert('Please enter a valid email address.');
+          emailInput.focus();
+          e.preventDefault();
+          return false;
+        }
+
+        if (startDateInput && endDateInput && startDateInput.value && endDateInput.value) {
+          if (startDateInput.value > endDateInput.value) {
+            alert('End date must be after start date.');
+            endDateInput.focus();
+            e.preventDefault();
+            return false;
+          }
+        }
+
+        if (messageInput) {
+          messageInput.value = messageInput.value.replace(/[&<>]/g, function(c) {
+            return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];
+          });
+        }
+
+        e.preventDefault();
+        form.reset();
+        var confirmation = document.getElementById('confirmation-message');
+        if (confirmation) {
+          confirmation.style.display = 'block';
+          setTimeout(function() {
+            confirmation.style.display = 'none';
+          }, 4000);
+        }
+      });
+    });
+  </script>
+</main>
+
+	<footer>
+    <div class="footer-main">
+			<p>Contact us: <a href="mailto:info@taniti.com">info@taniti.com</a> | +1 (555) 123-4567</p>
+			<p>Follow us:
+				<a href="#">Instagram</a> |
+				<a href="#">Facebook</a> |
+				<a href="#">Twitter</a>
+			</p>
+      <a href="contact.html" class="btn">Need Help?</a>
+		</div>
+	</footer>
+</body>
+</html>

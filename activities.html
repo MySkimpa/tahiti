@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activities | Taniti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-card">
+            <div class="logo"><a href="home.html" class="logo-link">Taniti</a></div>
+            <ul class="nav-links">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="lodging.html">Lodging</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="city.html">Taniti City</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="header-right">
+                <a href="home.html#plan" class="btn header-cta">Plan Your Trip</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Adventure Awaits in Taniti</h1>
+            <p>From beaches to volcanoes, discover unforgettable experiences.</p>
+        </div>
+    </header>
+
+    <section class="hotel-section">
+        <h2 class="section-title">Island Activities</h2>
+        <div class="activities-list">
+            <div class="activity-tile">
+                <img src="activity1.png" alt="Water Sports" class="activity-img" />
+                <h3 class="activity-title">Water Sports</h3>
+                <p class="activity-desc">Surf, snorkel, kayak, or paddleboard in Taniti’s crystal-clear waters. Perfect for all skill levels!</p>
+            </div>
+            <div class="activity-tile">
+                <img src="activity2.png" alt="Nature & Adventure" class="activity-img" />
+                <h3 class="activity-title">Nature & Adventure</h3>
+                <p class="activity-desc">Hike rainforests, zipline through the canopy, or spot rare wildlife on guided eco-tours.</p>
+            </div>
+            <div class="activity-tile">
+                <img src="activity3.png" alt="Culture" class="activity-img" />
+                <h3 class="activity-title">Culture</h3>
+                <p class="activity-desc">Experience local music, dance, and cuisine at Taniti’s vibrant festivals and markets.</p>
+            </div>
+            <div class="activity-tile">
+                <img src="activity4.png" alt="Volcano" class="activity-img" />
+                <h3 class="activity-title">Volcano</h3>
+                <p class="activity-desc">Take a guided tour to Taniti’s famous volcano hike! Hike the rim, learn the legends, and enjoy breathtaking views.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <p>Contact us: <a href="mailto:info@taniti.com">info@taniti.com</a> | +1 (555) 123-4567</p>
+            <p>Follow us:
+                <a href="#">Instagram</a> |
+                <a href="#">Facebook</a> |
+                <a href="#">Twitter</a>
+            </p>
+            <a href="contact.html" class="btn">Need Help?</a>
+        </div>
+    </footer>
+    <div class="fab-menu">
+        <button class="fab-btn" aria-label="Open quick menu">
+            <span class="fab-icon">☰</span>
+        </button>
+        <div class="fab-links">
+            <a href="lodging.html" class="fab-link" title="Lodging">🏨<span>Lodging</span></a>
+            <a href="city.html" class="fab-link" title="City">🏙️<span>City</span></a>
+            <a href="contact.html" class="fab-link" title="Contact">📧<span>Contact</span></a>
+        </div>
+    </div>
+    <script>
+        const fabBtn = document.querySelector('.fab-btn');
+        const fabLinks = document.querySelector('.fab-links');
+        fabBtn.addEventListener('click', function(e) {
+            fabLinks.classList.toggle('fab-open');
+            fabBtn.classList.toggle('fab-active');
+        });
+        document.addEventListener('click', function(e) {
+            if (!fabBtn.contains(e.target) && !fabLinks.contains(e.target)) {
+                fabLinks.classList.remove('fab-open');
+                fabBtn.classList.remove('fab-active');
+            }
+        });
+    </script>
+</body>
+</html>

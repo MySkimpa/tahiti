@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Taniti City | Must-See Spots</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	   <nav class="navbar split-header">
+		   <div class="nav-card">
+			<div class="logo"><a href="home.html" class="logo-link">Taniti</a></div>
+			   <ul class="nav-links">
+				   <li><a href="home.html">Home</a></li>
+				   <li><a href="lodging.html">Lodging</a></li>
+				   <li><a href="activities.html">Activities</a></li>
+				   <li><a href="city.html">Taniti City</a></li>
+				   <li><a href="contact.html">Contact</a></li>
+			   </ul>
+			   <div class="header-right">
+				<a href="home.html#plan" class="btn header-cta">Plan Your Trip</a>
+			   </div>
+		   </div>
+	   </nav>
+
+	<header class="hero city-hero">
+		<div class="hero-content">
+			<h1>Welcome to Taniti City</h1>
+			<p>The heart of Taniti’s culture, cuisine, and adventure.</p>
+		</div>
+	</header>
+
+	<section class="hotel-section">
+		<h2 class="section-title">Must-See Spots</h2>
+		<div class="carousel-wrapper">
+			<button class="carousel-arrow left" aria-label="Scroll left">&#8592;</button>
+			<div class="mustsee-carousel" id="mustsee-carousel">
+				<div class="mustsee-item">
+					<img src="city1.png" alt="Historic Landmarks" class="mustsee-img">
+					<span class="mustsee-label">Historic Landmarks</span>
+				</div>
+				<div class="mustsee-item">
+					<img src="city2.png" alt="Main Square" class="mustsee-img">
+					<span class="mustsee-label">Main Square</span>
+				</div>
+				<div class="mustsee-item">
+					<img src="city3.png" alt="Harbor View" class="mustsee-img">
+					<span class="mustsee-label">Harbor View</span>
+				</div>
+				<div class="mustsee-item">
+					<img src="city4.png" alt="Street Food Stalls" class="mustsee-img">
+					<span class="mustsee-label">Street Food Stalls</span>
+				</div>
+				<div class="mustsee-item">
+					<img src="city5.png" alt="Botanical Gardens" class="mustsee-img">
+					<span class="mustsee-label">Botanical Gardens</span>
+				</div>
+			</div>
+			<button class="carousel-arrow right" aria-label="Scroll right">&#8594;</button>
+		</div>
+	</section>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	const carousel = document.getElementById('mustsee-carousel');
+	const leftBtn = document.querySelector('.carousel-arrow.left');
+	const rightBtn = document.querySelector('.carousel-arrow.right');
+	if (!carousel || !leftBtn || !rightBtn) return;
+
+	function updateArrows() {
+		if (carousel.scrollWidth <= carousel.offsetWidth + 1) {
+			leftBtn.disabled = true;
+			rightBtn.disabled = true;
+			leftBtn.classList.add('disabled');
+			rightBtn.classList.add('disabled');
+			return;
+		}
+		leftBtn.disabled = carousel.scrollLeft <= 2;
+		rightBtn.disabled = carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 2;
+		leftBtn.classList.toggle('disabled', leftBtn.disabled);
+		rightBtn.classList.toggle('disabled', rightBtn.disabled);
+	}
+
+	leftBtn.addEventListener('click', function() {
+		carousel.scrollBy({ left: -340, behavior: 'smooth' });
+		setTimeout(updateArrows, 400);
+	});
+	rightBtn.addEventListener('click', function() {
+		carousel.scrollBy({ left: 340, behavior: 'smooth' });
+		setTimeout(updateArrows, 400);
+	});
+	carousel.addEventListener('scroll', updateArrows, { passive: true });
+	window.addEventListener('resize', updateArrows);
+	setTimeout(updateArrows, 100);
+	updateArrows();
+
+	let startX = 0;
+	let isDown = false;
+	carousel.addEventListener('touchstart', function(e) {
+		if (e.touches.length === 1) {
+			isDown = true;
+			startX = e.touches[0].clientX;
+		}
+	});
+	carousel.addEventListener('touchmove', function(e) {
+		if (!isDown) return;
+		const moveX = e.touches[0].clientX;
+		const diff = startX - moveX;
+		if (Math.abs(diff) > 30) {
+			carousel.scrollBy({ left: diff, behavior: 'auto' });
+			startX = moveX;
+		}
+	});
+	carousel.addEventListener('touchend', function() {
+		isDown = false;
+		updateArrows();
+	});
+		let isMouseDown = false;
+		let mouseStartX = 0;
+		let scrollStart = 0;
+		carousel.addEventListener('mousedown', function(e) {
+			isMouseDown = true;
+			mouseStartX = e.pageX;
+			scrollStart = carousel.scrollLeft;
+			carousel.classList.add('dragging');
+			e.preventDefault();
+		});
+		document.addEventListener('mousemove', function(e) {
+			if (!isMouseDown) return;
+			const dx = e.pageX - mouseStartX;
+			carousel.scrollLeft = scrollStart - dx;
+		});
+		document.addEventListener('mouseup', function() {
+			if (isMouseDown) {
+				isMouseDown = false;
+				carousel.classList.remove('dragging');
+				updateArrows();
+			}
+		});
+});
+</script>
+
+	
+
+	<footer>
+		<div class="footer-main">
+			<p>Contact us: <a href="mailto:info@taniti.com">info@taniti.com</a> | +1 (555) 123-4567</p>
+			<p>Follow us:
+				<a href="#">Instagram</a> |
+				<a href="#">Facebook</a> |
+				<a href="#">Twitter</a>
+			</p>
+			<a href="contact.html" class="btn">Need Help?</a>
+		</div>
+	</footer>
+	</body>
+	<div class="fab-menu">
+		<button class="fab-btn" aria-label="Open quick menu">
+			<span class="fab-icon">☰</span>
+		</button>
+		<div class="fab-links">
+			<a href="lodging.html" class="fab-link" title="Lodging">🏨<span>Lodging</span></a>
+			<a href="activities.html" class="fab-link" title="Activities">🏄‍♂️<span>Activities</span></a>
+			<a href="contact.html" class="fab-link" title="Contact">📧<span>Contact</span></a>
+		</div>
+	</div>
+	<script>
+		const fabBtn = document.querySelector('.fab-btn');
+		const fabLinks = document.querySelector('.fab-links');
+		fabBtn.addEventListener('click', function(e) {
+			fabLinks.classList.toggle('fab-open');
+			fabBtn.classList.toggle('fab-active');
+		});
+		document.addEventListener('click', function(e) {
+			if (!fabBtn.contains(e.target) && !fabLinks.contains(e.target)) {
+				fabLinks.classList.remove('fab-open');
+				fabBtn.classList.remove('fab-active');
+			}
+		});
+	</script>
+</body>
+</html>

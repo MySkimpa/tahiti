@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lodging | Taniti</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	   <nav class="navbar split-header">
+		   <div class="nav-card">
+			<div class="logo"><a href="home.html" class="logo-link">Taniti</a></div>
+			   <ul class="nav-links">
+				   <li><a href="home.html">Home</a></li>
+				   <li><a href="lodging.html">Lodging</a></li>
+				   <li><a href="activities.html">Activities</a></li>
+				   <li><a href="city.html">Taniti City</a></li>
+				   <li><a href="contact.html">Contact</a></li>
+			   </ul>
+			   <div class="header-right">
+				<a href="home.html#plan" class="btn header-cta">Plan Your Trip</a>
+			   </div>
+		   </div>
+	   </nav>
+
+	<header class="hero lodging-hero">
+		<div class="hero-content">
+			<h1>Find Your Perfect Stay</h1>
+			<p>From cozy hostels to luxury honeymoon resorts, Taniti has a place for everyone.</p>
+		</div>
+	</header>
+
+	<section class="hotel-section">
+		<h2 class="section-title">Relax with us!</h2>
+		<div class="hotel-list">
+			<div class="hotel-card">
+				<img src="lodging1.png" alt="Seaside Hostel">
+				<h3>Seaside Hostel</h3>
+				<div class="lodging-meta">Hostel &bull; $</div>
+				<p>Affordable, social, and steps from the beach. Free Wi-Fi, shared kitchen, and group tours available.</p>
+				<a href="#" class="btn">View Details</a>
+			</div>
+			<div class="hotel-card">
+				<img src="lodging2.png" alt="Bayview B&B">
+				<h3>Bayview B&amp;B</h3>
+				<div class="lodging-meta">Bed &amp; Breakfast &bull; $$</div>
+				<p>Charming rooms with ocean views, great for couples. Homemade breakfast, local hosts, and tour guides available.</p>
+				<a href="#" class="btn">View Details</a>
+			</div>
+			<div class="hotel-card">
+				<img src="lodging3.png" alt="Family Hotel">
+				<h3>Coral Family Hotel</h3>
+				<div class="lodging-meta">Family Hotel &bull; $$</div>
+				<p>Spacious rooms, pool, and playground. Perfect for families, close to taniti city and restaurants.</p>
+				<a href="#" class="btn">View Details</a>
+			</div>
+			<div class="hotel-card">
+				<img src="lodging4.png" alt="Lagoon Resort">
+				<h3>Lagoon Resort</h3>
+				<div class="lodging-meta">Resort &bull; $$$</div>
+				<p>Luxury resort with spa, honeymoon suites, and access to a private beach. Fine dining and premium amenities included.</p>
+				<a href="#" class="btn">Book Now</a>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+		<div class="footer-main">
+			<p>Contact us: <a href="mailto:info@taniti.com">info@taniti.com</a> | +1 (555) 123-4567</p>
+			<p>Follow us:
+				<a href="#">Instagram</a> |
+				<a href="#">Facebook</a> |
+				<a href="#">Twitter</a>
+			</p>
+			<a href="contact.html" class="btn">Need Help?</a>
+		</div>
+	</footer>
+	<div class="fab-menu">
+		<button class="fab-btn" aria-label="Open quick menu">
+			<span class="fab-icon">☰</span>
+		</button>
+		<div class="fab-links">
+			<a href="activities.html" class="fab-link" title="Activities">🏄‍♂️<span>Activities</span></a>
+			<a href="city.html" class="fab-link" title="City">🏙️<span>City</span></a>
+			<a href="contact.html" class="fab-link" title="Contact">📧<span>Contact</span></a>
+		</div>
+	</div>
+	<script>
+		const fabBtn = document.querySelector('.fab-btn');
+		const fabLinks = document.querySelector('.fab-links');
+		fabBtn.addEventListener('click', function(e) {
+			fabLinks.classList.toggle('fab-open');
+			fabBtn.classList.toggle('fab-active');
+		});
+		document.addEventListener('click', function(e) {
+			if (!fabBtn.contains(e.target) && !fabLinks.contains(e.target)) {
+				fabLinks.classList.remove('fab-open');
+				fabBtn.classList.remove('fab-active');
+			}
+		});
+	</script>
+</body>
+</html>
